@@ -15,15 +15,16 @@ import bibliometria
 
 ```
 
-## Main functions
-
 ## Data
 Built-in Datasets
-
+```
 import bibliometria as bm
 
 sjr = bm.get_sjr()   # pandas.DataFrame
+
 wos = bm.get_wos()   # pandas.DataFrame
+```
+## Main functions
 
 The package exposes four main functions for working with journal data.
 
