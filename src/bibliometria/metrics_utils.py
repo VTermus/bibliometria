@@ -1,8 +1,8 @@
 """
 This module contains internal helper functions for extracting and merging journal metrics
 """
-from .journal_data import get_sjr, get_wos, items1, items2, issn_idx1, issn_idx2
-from .data_utils import _split_codes, _normalize_issn
+from bibliometria.journal_data import get_sjr, get_wos, items1, items2, issn_idx1, issn_idx2
+from bibliometria.data_utils import _split_codes, _normalize_issn
 
 import pandas as pd
 from rapidfuzz import fuzz, process

@@ -1,7 +1,7 @@
 """
 This module provides loading and indexing utilities for the built-in datasets with journal data
 """
-from .data_utils import _calculate_quartile, _check_title, _split_codes, _add_index_entry
+from bibliometria.data_utils import _calculate_quartile, _check_title, _split_codes, _add_index_entry
 
 import pandas as pd
 import importlib.resources

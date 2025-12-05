@@ -2,9 +2,9 @@
 This module provides four main user functions of the package.
 """
 
-from .data_utils import _normalize_issn
-from .journal_data import get_sjr, get_wos, items1, items2, issn_idx1, issn_idx2
-from .metrics_utils import _extract_metrics_from_row, _find_partner_row, _merge_metric_parts, _get_row_by_title, _title_best_match, _scorer
+from bibliometria.data_utils import _normalize_issn
+from bibliometria.journal_data import get_sjr, get_wos, items1, items2, issn_idx1, issn_idx2
+from bibliometria.metrics_utils import _extract_metrics_from_row, _find_partner_row, _merge_metric_parts, _get_row_by_title, _title_best_match, _scorer
 
 import pandas as pd
 from rapidfuzz import process
@@ -74,14 +74,13 @@ def title_matches(
     result = pd.DataFrame(rows).sort_values("match_score", ascending=False)
 
     result = result.head(limit)
-
-    # drop indexes of source dfs
     result = result.reset_index(drop=True)
 
-    cols = [c for c in [
-        "raw_title","matched_title","match_score","source", "title",
-       "issn","eissn","sjr","sjr_best_quartile","wos_quartile"
-    ] if c in result.columns]
+    order = [
+        "raw_title", "matched_title", "match_score", "source", "title", 
+        "issn", "eissn", "sjr", "sjr_best_quartile", "wos_quartile",
+    ]
+    cols = [c for c in order if c in result.columns] 
     
     return result[cols]
 
@@ -122,15 +121,13 @@ def title_best_match(
     row["source"] = "SCImagojr" if source == "df1" else "Web of Science"
 
 
-    result = [
-        "raw_title", "matched_title", "match_score", "source", "title", 
-        "issn", "eissn", "sjr", "sjr_best_quartile", "wos_quartile",
+    order = [
+        "raw_title", "matched_title", "match_score", "source",
+        "title", "issn", "eissn", "sjr", "sjr_best_quartile", "wos_quartile"
     ]
-    cols = [c for c in result if c in row.index] + [
-        c for c in row.index if c not in result
-    ]
+    cols = [c for c in order if c in row.index]
 
-    return row[cols]
+    return pd.Series({c: row[c] for c in cols})
 
 
 def journal_metrics(
