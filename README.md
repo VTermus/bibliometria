@@ -30,20 +30,15 @@ The package exposes four main functions for working with journal data.
 ---
 ### `title_matches(title_query, limit=10, score_cutoff=60) -> pd.DataFrame`
 
-Fuzzy-search a journal by its **title** across both SCImago Journal Rank (SJR) and Web of Science (WoS).  
-Returns a DataFrame with the top candidate matches, their similarity scores, data source, and basic journal metadata  
-(e.g. title, ISSN/eISSN, SJR, quartiles).
-
-Typical use case: quickly see a list of possible matches when you are not sure about the exact journal title.
+Fuzzy-searches a journal by title across SJR and WoS and returns a DataFrame
+of the top candidate matches with similarity scores and basic metadata
+(title, ISSN/eISSN, SJR, quartiles, etc.).
 
 ---
 ### `title_best_match(title_query) -> pd.Series | None`
 
-Find the **single best fuzzy match** for a journal title across SJR and WoS.  
-Returns a pandas Series with the matched title, similarity score, data source, and core metadata,  
-or `None` if no reasonable match is found.
-
-Typical use case: you want one “best guess” journal record for a given title string.
+Returns the single best fuzzy match for a journal title as a pandas Series
+with similarity score and metadata, or `None` if no suitable match is found.
 
 ---
 ### `journal_metrics(query, query_type="title") -> pd.Series`
@@ -53,7 +48,7 @@ Retrieve **core bibliometric indicators** for a journal, using either:
 - `query_type="title"` – fuzzy match by journal title, or  
 - `query_type="issn"` – exact match by ISSN / eISSN.
 
-The returned Series contains a small set of harmonised metrics such as:
+The returned Series contains a small set of metrics such as:
 
 - `sjr`, `sjr_best_quartile`, `h_index` (from SJR)  
 - `wos_quartile`, `wos_jif`, `wos_jif_5_year` (from WoS, if available)
