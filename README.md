@@ -21,13 +21,12 @@ Built-in Datasets
 import bibliometria as bm
 
 sjr = bm.get_sjr()   # pandas.DataFrame
-
 wos = bm.get_wos()   # pandas.DataFrame
 ```
 ## Main functions
 
 The package exposes four main functions for working with journal data.
-
+---
 ### `title_matches(title_query, limit=10, score_cutoff=60) -> pd.DataFrame`
 
 Fuzzy-search a journal by its **title** across both SCImago Journal Rank (SJR) and Web of Science (WoS).  
@@ -72,6 +71,12 @@ merged into one record. Supports the same lookup modes as `journal_metrics`:
 The result also includes a few metadata columns describing the lookup:
 
 - `query`, `query_type`, `source_primary`, `matched_title`, `match_score`
+
+## Interactive examples
+
+You can explore example outputs in Google Colab:
+
+[![Open In Colab]()]()
 
 ## Contribution
 This package is in the testing status.
