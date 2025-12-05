@@ -26,6 +26,7 @@ wos = bm.get_wos()   # pandas.DataFrame
 ## Main functions
 
 The package exposes four main functions for working with journal data.
+
 ---
 ### `title_matches(title_query, limit=10, score_cutoff=60) -> pd.DataFrame`
 
