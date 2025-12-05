@@ -1,0 +1,17 @@
+README.md
+
+test/
+
+src/__pycache__/
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+.venv/
+
+build/
+dist/
+
+
