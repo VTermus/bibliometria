@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: package bibliometria</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">bibliometria</strong> (version 0.1.0)</td>
+<td class="extra"><a href=".">index</a><br><a href="file:/Users/tiramissu/Documents/GitHub/bibliometria/src/bibliometria/__init__.py">/Users/tiramissu/Documents/GitHub/bibliometria/src/bibliometria/__init__.py</a></td></tr></table>
+    <p><span class="code">Bibliometria:&nbsp;A&nbsp;package&nbsp;for&nbsp;bibliometric&nbsp;analysis&nbsp;of&nbsp;journals.<br>
+&nbsp;<br>
+This&nbsp;package&nbsp;provides&nbsp;tools&nbsp;for&nbsp;retrieving&nbsp;journal&nbsp;information&nbsp;and&nbsp;comparing&nbsp;metrics,&nbsp;&nbsp;<br>
+combining&nbsp;the&nbsp;data&nbsp;from&nbsp;SCImago&nbsp;Journal&nbsp;Rank&nbsp;(SJR)&nbsp;and&nbsp;Web&nbsp;of&nbsp;Science&nbsp;(WoS).&nbsp;<br>
+&nbsp;<br>
+Features<br>
+&nbsp;<br>
+Data&nbsp;access<br>
+----------<br>
+-&nbsp;<a href="#-get_sjr">get_sjr</a>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;the&nbsp;built-in&nbsp;SJR&nbsp;table&nbsp;as&nbsp;a&nbsp;pandas.DataFrame.<br>
+-&nbsp;<a href="#-get_wos">get_wos</a>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;the&nbsp;built-in&nbsp;WoS&nbsp;table&nbsp;as&nbsp;a&nbsp;pandas.DataFrame.<br>
+&nbsp;<br>
+Title&nbsp;matching<br>
+----------<br>
+-&nbsp;<a href="#-title_matches">title_matches</a>(title_query,&nbsp;limit=10,&nbsp;score_cutoff=60)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Find&nbsp;top-N&nbsp;fuzzy&nbsp;matches&nbsp;for&nbsp;a&nbsp;journal&nbsp;title&nbsp;across&nbsp;SJR&nbsp;and&nbsp;WoS.<br>
+-&nbsp;<a href="#-title_best_match">title_best_match</a>(title_query)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;a&nbsp;concise&nbsp;Series&nbsp;describing&nbsp;the&nbsp;single&nbsp;best&nbsp;fuzzy&nbsp;match.<br>
+&nbsp;<br>
+Journal&nbsp;metrics<br>
+----------<br>
+-&nbsp;<a href="#-journal_metrics">journal_metrics</a>(query,&nbsp;query_type="title")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;a&nbsp;Series&nbsp;with&nbsp;core&nbsp;SJR/WoS&nbsp;metrics&nbsp;for&nbsp;a&nbsp;journal.<br>
+-&nbsp;<a href="#-journal_info">journal_info</a>(query,&nbsp;query_type="title")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;a&nbsp;single-row&nbsp;DataFrame&nbsp;with&nbsp;all&nbsp;available&nbsp;SJR/WoS&nbsp;fields<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;matching&nbsp;metadata.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Package Contents</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="bibliometria.data.html"><strong>data</strong>&nbsp;(package)</a><br>
+<a href="bibliometria.data_utils.html">data_utils</a><br>
+</td><td class="multicolumn"><a href="bibliometria.journal_data.html">journal_data</a><br>
+<a href="bibliometria.metrics.html">metrics</a><br>
+</td><td class="multicolumn"><a href="bibliometria.metrics_utils.html">metrics_utils</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-get_sjr"><strong>get_sjr</strong></a>()</dt><dd><span class="code">Get&nbsp;SJR&nbsp;2024&nbsp;data&nbsp;(cached)</span></dd></dl>
+ <dl><dt><a name="-get_wos"><strong>get_wos</strong></a>()</dt><dd><span class="code">Get&nbsp;WOS&nbsp;data&nbsp;(cached)</span></dd></dl>
+ <dl><dt><a name="-journal_info"><strong>journal_info</strong></a>(query: str | int, query_type: str = 'title') -&gt; pd.DataFrame</dt><dd><span class="code">Return&nbsp;a&nbsp;single-row&nbsp;table&nbsp;with&nbsp;all&nbsp;available&nbsp;data&nbsp;from&nbsp;SJR&nbsp;and&nbsp;WoS&nbsp;for&nbsp;a&nbsp;journal&nbsp;by&nbsp;title&nbsp;or&nbsp;ISSN.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+query&nbsp;:&nbsp;str&nbsp;or&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Journal&nbsp;title&nbsp;or&nbsp;ISSN/eISSN.<br>
+query_type&nbsp;:&nbsp;str,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Searching&nbsp;mode,&nbsp;either&nbsp;"title"&nbsp;(fuzzy&nbsp;match)&nbsp;or&nbsp;"issn"&nbsp;(exact&nbsp;match).<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+pandas.DataFrame<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Single-row&nbsp;DataFrame&nbsp;with&nbsp;all&nbsp;merged&nbsp;data&nbsp;from&nbsp;SJR/WoS&nbsp;and&nbsp;metadata<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(query,&nbsp;query_type,&nbsp;source_primary,&nbsp;matched_title,&nbsp;match_score).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;no&nbsp;journal&nbsp;is&nbsp;found,&nbsp;contains&nbsp;only&nbsp;metadata&nbsp;values,&nbsp;other&nbsp;are&nbsp;None.</span></dd></dl>
+ <dl><dt><a name="-journal_metrics"><strong>journal_metrics</strong></a>(query: str | int, query_type: str = 'title') -&gt; pd.Series</dt><dd><span class="code">Find&nbsp;core&nbsp;SJR&nbsp;and&nbsp;WoS&nbsp;metric&nbsp;values&nbsp;for&nbsp;a&nbsp;journal&nbsp;by&nbsp;title&nbsp;or&nbsp;ISSN.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+query&nbsp;:&nbsp;str&nbsp;or&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Journal&nbsp;title&nbsp;or&nbsp;ISSN/eISSN.<br>
+query_type&nbsp;:&nbsp;str,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Searching&nbsp;mode,&nbsp;either&nbsp;"title"&nbsp;(fuzzy&nbsp;match)&nbsp;or&nbsp;"issn"&nbsp;(exact&nbsp;match).<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+pandas.Series<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Series&nbsp;with&nbsp;metrics&nbsp;sjr,&nbsp;sjr_best_quartile,&nbsp;h_index,&nbsp;wos_quartile,&nbsp;wos_jif,&nbsp;wos_jif_5_year;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Series.name&nbsp;contains&nbsp;the&nbsp;matched&nbsp;journal&nbsp;title&nbsp;or&nbsp;None&nbsp;if&nbsp;not&nbsp;found.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;May&nbsp;be&nbsp;empty&nbsp;if&nbsp;the&nbsp;journal&nbsp;was&nbsp;not&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-title_best_match"><strong>title_best_match</strong></a>(title_query: str) -&gt; pd.Series | None</dt><dd><span class="code">Find&nbsp;the&nbsp;single&nbsp;best&nbsp;title&nbsp;candidate&nbsp;by&nbsp;fuzzy&nbsp;matching&nbsp;across&nbsp;SJR&nbsp;and&nbsp;WoS&nbsp;datasets.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+title_query&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Journal&nbsp;title&nbsp;to&nbsp;match&nbsp;against&nbsp;two&nbsp;datasets<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+pandas.Series&nbsp;or&nbsp;None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;Series&nbsp;with&nbsp;fields&nbsp;such&nbsp;as:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;raw_title,&nbsp;matched_title,&nbsp;match_score,&nbsp;source,&nbsp;title,&nbsp;issn,&nbsp;eissn,&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;match&nbsp;is&nbsp;found.</span></dd></dl>
+ <dl><dt><a name="-title_matches"><strong>title_matches</strong></a>(title_query: str, limit: int = 10, score_cutoff: int = 60) -&gt; pd.DataFrame</dt><dd><span class="code">Find&nbsp;top-n&nbsp;title&nbsp;candidates&nbsp;by&nbsp;fuzzy&nbsp;matching&nbsp;across&nbsp;SJR&nbsp;and&nbsp;WoS&nbsp;datasets.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+title_query&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Journal&nbsp;title&nbsp;to&nbsp;match&nbsp;against&nbsp;two&nbsp;datasets.<br>
+limit&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;candidates&nbsp;to&nbsp;retrieve.<br>
+score_cutoff&nbsp;:&nbsp;int,&nbsp;optional<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Minimal&nbsp;similarity&nbsp;score&nbsp;for&nbsp;a&nbsp;match&nbsp;to&nbsp;be&nbsp;included.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+pandas.DataFrame<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Each&nbsp;row&nbsp;is&nbsp;a&nbsp;candidate&nbsp;match&nbsp;with&nbsp;similarity&nbsp;score&nbsp;and&nbsp;journal&nbsp;metadata.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;May&nbsp;be&nbsp;empty&nbsp;if&nbsp;no&nbsp;candidates&nbsp;satisfy&nbsp;score_cutoff.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>__all__</strong> = ['__version__', '__license__', 'get_sjr', 'get_wos', 'title_matches', 'title_best_match', 'journal_metrics', 'journal_info']<br>
+<strong>__license__</strong> = 'GPL-3.0'</td></tr></table>
+</body></html>

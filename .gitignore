@@ -1,6 +1,7 @@
 README.md
 
-docs/
+build/
+dist/
 test/
 
 src/__pycache__/
@@ -12,7 +13,6 @@ __pycache__/
 
 .venv/
 
-build/
-dist/
+
 
 

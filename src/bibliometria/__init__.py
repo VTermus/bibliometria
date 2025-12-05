@@ -29,7 +29,7 @@ Journal metrics
     and matching metadata.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __license__ = "GPL-3.0"
 
 from .journal_data import get_sjr, get_wos
