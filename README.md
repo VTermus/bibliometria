@@ -76,7 +76,9 @@ The result also includes a few metadata columns describing the lookup:
 
 You can explore example outputs in Google Colab:
 
-[![Open In Colab]()]()
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://github.com/VTermus/bibliometria/blob/main/bibliometria_demo.ipynb
+)
 
 ## Contribution
 This package is in the testing status.
