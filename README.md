@@ -6,43 +6,47 @@ combining the data from SCImago Journal Rank and Web of Science.
 
 ## Installation
 ```bash
-pip install pycauctile
+pip install bibliometria
+```
+```python
+import bibliometria as bm
+# or import the functions directly
+from bibliometria import get_sjr, get_wos, title_matches, title_best_match, journal_metrics, journal_info
 ```
 
 ## Usage
+
+### Data
+The package contains two built-in datasets with SJR and WoS data that can be downloaded from this repository or via internal loading functions
 ```python
-import bibliometria
-
-```
-
-## Data
-Built-in Datasets
-```
 import bibliometria as bm
 
 sjr = bm.get_sjr()   # pandas.DataFrame
 wos = bm.get_wos()   # pandas.DataFrame
 ```
-## Main functions
+### Main functions
 
 The package exposes four main functions for working with journal data.
 
 ---
-### `title_matches(title_query, limit=10, score_cutoff=60) -> pd.DataFrame`
+##### `title_matches(title_query, limit=10, score_cutoff=60) -> pd.DataFrame`
 
 Fuzzy-searches a journal by title across SJR and WoS and returns a DataFrame
 of the top candidate matches with similarity scores and basic metadata
 (title, ISSN/eISSN, SJR, quartiles, etc.).
 
 ---
-### `title_best_match(title_query) -> pd.Series | None`
+#### `title_best_match(title_query) -> pd.Series | None`
 
 Returns the single best fuzzy match for a journal title as a pandas Series
 with similarity score and metadata, or `None` if no suitable match is found.
 
 ---
-### `journal_metrics(query, query_type="title") -> pd.Series`
-
+#### journal_metrics
+```python
+journal_metrics(query, query_type="title") 
+>>> pd.Series
+```
 Retrieve **core bibliometric indicators** for a journal, using either:
 
 - `query_type="title"` – fuzzy match by journal title, or  
@@ -56,7 +60,11 @@ The returned Series contains a small set of metrics such as:
 If the journal is not found, an “empty” Series with all fields set to `None` is returned, and a warning is emitted.
 
 ---
-### `journal_info(query, query_type="title") -> pd.DataFrame`
+#### journal_info
+```python
+journal_info(query, query_type="title") 
+>>> pd.DataFrame
+```
 
 Return a **single-row DataFrame** with all available fields for a journal from both SJR and WoS,  
 merged into one record. Supports the same lookup modes as `journal_metrics`:
@@ -70,7 +78,7 @@ The result also includes a few metadata columns describing the lookup:
 
 ## Interactive examples
 
-You can explore example outputs in Google Colab:
+You can explore example outputs in the notebook:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
 https://github.com/VTermus/bibliometria/blob/main/bibliometria_demo.ipynb
