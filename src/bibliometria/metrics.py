@@ -371,6 +371,13 @@ def journal_info(
                 score=None
             )
 
+        if source == "df1":
+            source_primary = "SCImagojr"
+        elif source == "df2":
+            source_primary = "Web of Science"
+        else:
+            source_primary = source 
+
         partner_row = _find_partner_row(row, source)
 
         # merge row + partner_row
@@ -392,7 +399,7 @@ def journal_info(
             merged_row=merged,
             query_val=query,
             query_type_val="title",
-            source_primary=source,
+            source_primary=source_primary,
             matched_title=matched_title,
             score=score
         )
