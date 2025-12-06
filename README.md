@@ -1,8 +1,13 @@
 # Bibliometria
+
+[![PyPI version](https://img.shields.io/pypi/v/bibliometria.svg)](https://pypi.org/project/bibliometria/)
+[![Python versions](https://img.shields.io/pypi/pyversions/bibliometria.svg)](https://pypi.org/project/bibliometria/)
+[![License](https://img.shields.io/pypi/l/bibliometria.svg)](https://pypi.org/project/bibliometria/)
+
 A package for bibliometric analysis of journals.
 
 This package provides tools for retrieving journal information and comparing metrics,  
-combining the data from SCImago Journal Rank and Web of Science. 
+combining the data from Scopus (SCImago Journal Rank) and Web of Science. 
 
 ## Installation
 ```bash

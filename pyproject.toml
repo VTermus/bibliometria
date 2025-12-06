@@ -6,7 +6,8 @@ build-backend = "hatchling.build"
 name = "bibliometria"
 version = "0.1.0"
 authors = [
-    "Vladislava Termus <vl.trmus@gmail.com>, Alexandra Pogozheva <sashapogozheva04@gmail.com>"  
+  { name="Vladislava Termus", email="vl.trmus@gmail.com" },
+  { name="Alexandra Pogozheva", email="sashapogozheva04@gmail.com" },
 ]
 description = "A package for bibliometric analysis of journals"
 readme = "README.md"
