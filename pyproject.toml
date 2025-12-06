@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "bibliometria"
-version = "0.1.1"
+version = "0.1.0"
 authors = [
   { name="Vladislava Termus", email="vl.trmus@gmail.com" },
   { name="Alexandra Pogozheva", email="sashapogozheva04@gmail.com" },

@@ -10,6 +10,8 @@ pip install bibliometria
 ```
 ```python
 import bibliometria as bm
+```
+```python
 # or import the functions directly
 from bibliometria import get_sjr, get_wos, title_matches, title_best_match, journal_metrics, journal_info
 ```
@@ -17,27 +19,36 @@ from bibliometria import get_sjr, get_wos, title_matches, title_best_match, jour
 ## Usage
 
 ### Data
-The package contains two built-in datasets with SJR and WoS data that can be downloaded from this repository or via internal loading functions
+The package contains two built-in datasets with SJR and WoS data that can be downloaded from this repository or via internal loading functions:
 ```python
 import bibliometria as bm
 
-sjr = bm.get_sjr()   # pandas.DataFrame
-wos = bm.get_wos()   # pandas.DataFrame
+sjr = bm.get_sjr()
+>>> pd.DataFrame
+
+wos = bm.get_wos()
+>>> pd.DataFrame
 ```
 ### Main functions
 
 The package exposes four main functions for working with journal data.
 
 ---
-##### `title_matches(title_query, limit=10, score_cutoff=60) -> pd.DataFrame`
-
+##### title_matches
+```python
+title_matches(title_query, limit=10, score_cutoff=60)
+>>> pd.DataFrame
+```
 Fuzzy-searches a journal by title across SJR and WoS and returns a DataFrame
 of the top candidate matches with similarity scores and basic metadata
 (title, ISSN/eISSN, SJR, quartiles, etc.).
 
 ---
-#### `title_best_match(title_query) -> pd.Series | None`
-
+#### title_best_match
+```python
+title_best_match(title_query) 
+>>> pd.Series
+```
 Returns the single best fuzzy match for a journal title as a pandas Series
 with similarity score and metadata, or `None` if no suitable match is found.
 
@@ -50,7 +61,7 @@ journal_metrics(query, query_type="title")
 Retrieve **core bibliometric indicators** for a journal, using either:
 
 - `query_type="title"` – fuzzy match by journal title, or  
-- `query_type="issn"` – exact match by ISSN / eISSN.
+- `query_type="issn"` – exact match by ISSN / eISSN
 
 The returned Series contains a small set of metrics such as:
 
