@@ -66,7 +66,7 @@ Retrieve **core bibliometric indicators** for a journal, using either:
 The returned Series contains a small set of metrics such as:
 
 - `sjr`, `sjr_best_quartile`, `h_index` (from SJR)  
-- `wos_quartile`, `wos_jif`, `wos_jif_5_year` (from WoS, if available)
+- `wos_quartile`, `wos_jif`, `wos_jif_5_year` (from WoS)
 
 If the journal is not found, an “empty” Series with all fields set to `None` is returned, and a warning is emitted.
 
